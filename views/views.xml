@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_project_tree_inherit" model="ir.ui.view">
+        <field name="name">project.project.tree.inherit</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="complete_percentage_progress" widget="progressbar"></field>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_project_kanban_inherit" model="ir.ui.view">
+        <field name="name">project.project.kanban.inherit</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban[1]/templates[1]/t[1]/div[1]/div[1]/span[1]/field[@name='is_favorite']" position="after">
+                <field name="complete_percentage_progress" display="full" attrs="{}" widget="progressbar"/>
+            </xpath>
+        </field>
+    </record>
+<!--    Tasks details list-->
+    <record id="view_project_tasl_tree_inherit" model="ir.ui.view">
+        <field name="name">project.task.tree.inherit</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="complete_task_percentage_progress" widget="progressbar"></field>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_project_task_kanban_inherit" model="ir.ui.view">
+        <field name="name">project.task.kanban.inherit</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <field name="complete_task_percentage_progress" display="full" widget="progressbar"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_project_form_inherit" model="ir.ui.view">
+        <field name="name">project.project.form.inherit</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="complete_percentage" widget="percentage"></field>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_project_task_form_inherit" model="ir.ui.view">
+        <field name="name">project.task.form.inherit</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="complete_task_percentage" widget="percentage"></field>
+            </field>
+        </field>
+    </record>
+
+
+
+<!--complete_percentage-->
+</odoo>
